@@ -10,4 +10,8 @@
     <div class="dummy"></div>
     <div class="dummy"></div>
 </div>
-<button class="btn" (click)="getMoreUsers()" *ngIf="!isEnd">Show more</button>
+<button class="btn" (click)="getMoreUsers()" *ngIf="!isEnd && (loadingHandler.isLoading$ | async) === false">Show more</button>
+<div class="center">
+    <img class="loader" src="./assets/Preloader.png" alt="Loader" *ngIf="(loadingHandler.isLoading$ | async) === true">
+</div>
+

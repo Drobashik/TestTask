@@ -16,7 +16,7 @@ export class FormSectionComponent implements OnInit {
     this.form = new FormGroup({
       name: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('', [Validators.required, Validators.pattern(/0-9/g)]),
+      phone: new FormControl('', [Validators.required]),
       position: new FormControl('Frontend developer'),
       photo: new FormControl('')
     })

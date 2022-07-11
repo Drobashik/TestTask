@@ -50,3 +50,12 @@ button {
     margin: 0 auto;
     margin-bottom: 140px;
 }
+
+.loader {
+    animation: spin 1s infinite linear;
+}
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}

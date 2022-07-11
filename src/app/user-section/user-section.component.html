@@ -1,0 +1,13 @@
+<h1 class="text-center">Working with GET request</h1>
+<div class="cards-box">
+    <div class="card" *ngFor="let user of users">
+        <img [src]="user.photo" alt="Photo" onerror="this.src='./assets/img.png'">
+        <p>{{user.name}}</p>
+        <p>{{user.position}}</p>
+        <p [attr.data-text]="user.email">{{user.email}}</p>
+        <p>{{user.phone | phone}}</p>
+    </div>
+    <div class="dummy"></div>
+    <div class="dummy"></div>
+</div>
+<button class="btn" (click)="getMoreUsers()" *ngIf="!isEnd">Show more</button>

@@ -1,0 +1,43 @@
+<h1 class="text-center">Working with POST request</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-input">
+        <div class="group-input">
+            <input [ngClass]="{'input-red': form.get('name')?.invalid && form.get('name')?.dirty}" class="input" type="text" name="name" placeholder="Your name" formControlName="name">
+            <h6 class="red" *ngIf="form.get('name')?.invalid && form.get('name')?.dirty">Field required</h6>
+        </div>
+        <div class="group-input">
+            <input [ngClass]="{'input-red': form.get('email')?.invalid && form.get('email')?.dirty}" class="input" type="email" name="email" placeholder="Email" formControlName="email">
+            <h6 class="red" *ngIf="form.get('email')?.invalid && form.get('email')?.dirty">Field required</h6>
+        </div>
+        <div class="group-input">
+            <input [ngClass]="{'input-red': form.get('phone')?.invalid && form.get('phone')?.dirty}"  class="input" type="tel" name="phone" placeholder="Phone" formControlName="phone">
+            <h6 class="red" *ngIf="form.get('phone')?.invalid && form.get('phone')?.dirty">Field required</h6>
+            <h6>+38 (XXX) XXX - XX - XX</h6>
+        </div>
+    </div>
+    <div class="radio-btn">
+        <h3>Select your position</h3>
+        <div class="flex">
+            <input id="radio1" class="radio" type="radio" name="position" value="Frontend developer" formControlName="position">
+            <label for="radio1">Frontend developer</label>
+        </div>
+        <div class="flex">
+            <input id="radio2" class="radio" type="radio" name="position" value="Backend developer" formControlName="position">
+            <label for="radio2">Backend developer</label>
+        </div>
+        <div class="flex">
+            <input id="radio3" class="radio" type="radio" name="position" value="Designer" formControlName="position">
+            <label for="radio3">Designer</label>
+        </div>
+        <div class="flex">
+            <input id="radio4" class="radio" type="radio" name="position" value="QA" formControlName="position">
+            <label for="radio4">QA</label>
+        </div>
+    </div>
+    <div class="file">
+        <div class="file-custom"><label for="file">Upload</label><input id="file" type="file" name="photo" formControlName="photo"><span>Upload your photo</span></div>
+    </div>
+    <div class="container">
+        <button class="btn" [disabled]="!form.valid">Sign up</button>
+    </div>
+</form>

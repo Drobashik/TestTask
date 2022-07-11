@@ -1,0 +1,52 @@
+h1 {
+    color: #000000;
+    margin-bottom: 50px;
+    font-size: 40px;
+}
+
+.cards-box {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 21px;
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 370px;
+        height: 254px;
+        background-color: #fff;
+        margin-bottom: 29px;
+        padding: 20px;
+        img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        p {
+            cursor: default;
+            text-align: center;
+            color: #000;
+            width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            &:nth-child(2) {
+                margin-bottom: 20px;
+            }
+        }
+    }
+    .dummy {
+        width: 370px;
+        height: 0;
+    }
+}
+button {
+    margin: 0 auto;
+    margin-bottom: 140px;
+}

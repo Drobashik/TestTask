@@ -20,3 +20,8 @@ export interface ILink {
     };
     users: IUser[]
 }
+
+export interface IToken {
+    success: boolean;
+    token: string;
+}

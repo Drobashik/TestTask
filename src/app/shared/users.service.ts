@@ -1,29 +1,43 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, tap, map } from "rxjs";
-import { ILink, IUser } from "./users";
+import { ILink, IToken, IUser } from "./users";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class UserService {
-    private url: string = 'https://frontend-test-assignment-api.abz.agency/api/v1/users'
+    private url: string = 'https://frontend-test-assignment-api.abz.agency/api/v1/'
+    private token: string;
+
     public count: number = 6;
     public page: number = 1;
 
     constructor(private http: HttpClient) {}
+
+    getToken() {
+        return this.http.get<IToken>(`${this.url}token`).subscribe(data => {
+            console.log(data.token);
+            this.token = data.token;
+        })
+    }
     
-    getData(page: number, count: number): Observable<ILink> {
-        return this.http.get<ILink>(`${this.url}?page=${page}&count=${count}`)
+    getUsersData(page: number, count: number): Observable<ILink> {
+        return this.http.get<ILink>(`${this.url}users/?page=${page}&count=${count}`)
     }
 
     getMorePages(): Observable<ILink> {
         this.page++;
-        return this.getData(this.page, this.count);
+        return this.getUsersData(this.page, this.count);
     }
 
     addUser(user: IUser) {
-        this.http.post(this.url, user,)
+        console.log(this.token);
+        return this.http.post(`${this.url}users`, user, {
+            headers: new HttpHeaders({
+                'Token': this.token
+            })
+        })
     }
 }

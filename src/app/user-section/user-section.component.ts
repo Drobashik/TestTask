@@ -13,7 +13,6 @@ export class UserSectionComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   isEnd: boolean = false;
-  isLoading: boolean = false;
   loadingHandler = new LoadingHandler();
 
 
@@ -23,7 +22,7 @@ export class UserSectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadingHandler.beginLoading()
-    this.userService.getData(this.userService.page, this.userService.count).subscribe(data => {
+    this.userService.getUsersData(this.userService.page, this.userService.count).subscribe(data => {
       this.users = data.users
       this.loadingHandler.endLoading()
     })
@@ -32,16 +31,14 @@ export class UserSectionComponent implements OnInit {
   getMoreUsers() {
     this.loadingHandler.beginLoading()
     this.userService.getMorePages().subscribe(data => {
-      console.log(data);
       this.loadingHandler.endLoading()
       data.users.forEach(e => {
         this.users.push(e);
       })
     },
-    error => {
+    () => {
       this.isEnd = true;
       this.loadingHandler.endLoading()
-      console.log(error)
     })
   }
 

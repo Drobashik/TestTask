@@ -22,6 +22,14 @@ export class UserService {
             this.token = data.token;
         })
     }
+
+    getUserById(id: number) {
+        return this.http.get<ILink>(`${this.url}users/${id}`).pipe(
+            map(response => {
+                return response.user
+            })
+        )
+    }
     
     getUsersData(page: number, count: number): Observable<ILink> {
         return this.http.get<ILink>(`${this.url}users/?page=${page}&count=${count}`)

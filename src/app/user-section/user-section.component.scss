@@ -52,10 +52,17 @@ button {
 }
 
 .loader {
+    width: 34px;
     animation: spin 1s infinite linear;
+    margin-bottom: 140px;
 }
 @keyframes spin {
     100% {
         transform: rotate(360deg);
     }
+}
+
+.in-box {
+    width: 100%;
+    margin: 140px;
 }

@@ -88,8 +88,13 @@ form {
                 }
             }
             span {
+                cursor: default;
                 margin-left: 16px;
+                margin-right: 16px;
                 width: 100%;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
             }
 
         }

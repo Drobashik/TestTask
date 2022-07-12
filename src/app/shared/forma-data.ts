@@ -1,6 +1,6 @@
 import { FormGroup } from "@angular/forms";
 
-export class FormDataAppend {
+export class FormDataHelper {
     private formData = new FormData()
 
     createFormData(form: FormGroup, selectedPhoto: File) {

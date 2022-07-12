@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="file">
-        <div class="file-custom red" [ngClass]="{'red': bigSizeOfPhoto}"><label [ngClass]="{'red': bigSizeOfPhoto}" for="file">Upload</label><input (change)="uploadFile($event)" id="file" type="file" name="photo" accept="image/jpg,image/jpeg"><span>{{photoName}}</span></div>
+        <div class="file-custom red" [ngClass]="{'red': bigSizeOfPhoto}"><label [ngClass]="{'red': bigSizeOfPhoto}" for="file">Upload</label><input (change)="uploadFile($event)" id="file" type="file" name="photo" accept="image/jpg,image/jpeg"><span #textPhotoName [title]="photoName">{{photoName}}</span></div>
         <h6 class="red" *ngIf="bigSizeOfPhoto">The photo may not be greater than 5 Mbytes.</h6>
     </div>
     <div class="container">

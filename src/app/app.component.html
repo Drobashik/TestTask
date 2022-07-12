@@ -19,9 +19,9 @@
     </div>
   </div>
   <section id="users">
-    <app-user-section></app-user-section>
+    <app-user-section [userId]="returnId()"></app-user-section>
   </section>
   <section id="sign-up">
-    <app-form-section></app-form-section>
+    <app-form-section (userId)="getId($event)"></app-form-section>
   </section>
 </div>

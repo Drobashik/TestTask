@@ -1,8 +1,9 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegExpression } from '../shared/reg-exp';
-import { FormDataAppend } from '../shared/forma-data';
+import { FormDataHelper } from '../shared/forma-data';
 import { UserService } from '../shared/users.service';
+
 
 @Component({
   selector: 'app-form-section',
@@ -15,6 +16,9 @@ export class FormSectionComponent implements OnInit, AfterContentInit {
   private selectedPhoto: File;
   public bigSizeOfPhoto: boolean = false
   public photoName?: string = 'Upload your photo'
+
+  @ViewChild('textPhotoName') photoText: ElementRef;
+  @Output() userId = new EventEmitter<number>()
   
   constructor(private userService: UserService) { }
   
@@ -36,13 +40,14 @@ export class FormSectionComponent implements OnInit, AfterContentInit {
   }
   
   
-  formDataCreate = new FormDataAppend();
+  formDataCreate = new FormDataHelper();
 
   onSubmit() {
     const formData = this.formDataCreate.createFormData(this.form, this.selectedPhoto);
       this.userService.addUser(formData).subscribe({
         next: (data) => {
-          console.log(data);
+          console.log(data.user_id);
+          this.userId.emit(data.user_id)
         },
         error: (err) => {
           console.log(err);
@@ -54,11 +59,18 @@ export class FormSectionComponent implements OnInit, AfterContentInit {
       this.bigSizeOfPhoto = false;
       const file = (<HTMLInputElement>event.target).files?.item(0);
       this.selectedPhoto = file as File;
+      if(!file) {
+        this.photoText.nativeElement.style.color = '#7E7E7E';
+        this.photoName = 'Upload your photo'
+        return;
+      }
       if(file!.size > this.mBytes5) {
+        this.photoText.nativeElement.style.color = '#7E7E7E';
         this.photoName = 'Upload your photo'
         this.bigSizeOfPhoto = true;
         return;
       }
+      this.photoText.nativeElement.style.color = '#000000';
       this.photoName = file?.name;
     }
   }

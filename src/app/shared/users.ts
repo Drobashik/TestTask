@@ -7,6 +7,7 @@ export interface IUser {
     position_id: number;
     registration_timestamp?: number;
     photo: File;
+    user_id: number
 }
 
 export interface ILink {
@@ -19,6 +20,7 @@ export interface ILink {
         prev_url?: string
     };
     users: IUser[]
+    user: IUser
 }
 
 export interface IToken {

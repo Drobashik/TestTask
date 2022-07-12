@@ -65,12 +65,16 @@ form {
             border: 1px solid #D0CFCF;
             align-items: center;
             justify-content: space-between;
-            padding-right: 147px;
             color: #7E7E7E;
+            &.red {
+                border: 2px solid #CB3D40;
+            }
             input {
                 display: none;
             }
             label {
+                width: 83px;
+                height: 54px;
                 cursor: pointer;
                 color: #000000;
                 display: flex;
@@ -78,11 +82,25 @@ form {
                 padding: 14px 15px;
                 border: 1px solid #000000;
                 border-radius: 4px 0px 0px 4px;
+                &.red {
+                    border: none;
+                    border-right: 2px solid #CB3D40;
+                }
             }
+            span {
+                margin-left: 16px;
+                width: 100%;
+            }
+
         }
         margin-bottom: 50px;
+        h6 {
+            margin-left: 16px;
+            color: #CB3D40;
+        }
     }
     button {
         margin-bottom: 100px;
     }
+
 }

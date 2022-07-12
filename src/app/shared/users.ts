@@ -3,10 +3,10 @@ export interface IUser {
     name: string;
     email: string;
     phone: string;
-    position: string;
-    position_id?: number;
+    position?: string;
+    position_id: number;
     registration_timestamp?: number;
-    photo: string;
+    photo: File;
 }
 
 export interface ILink {

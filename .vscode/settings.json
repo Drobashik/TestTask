@@ -1,0 +1,5 @@
+{
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.fontFamily": "Consolas",
+    "editor.fontFamily": "Inconsolata",
+}

@@ -3,15 +3,15 @@
     <div class="form-input">
         <div class="group-input">
             <input [ngClass]="{'input-red': form.get('name')?.invalid && form.get('name')?.dirty}" class="input" type="text" name="name" placeholder="Your name" formControlName="name">
-            <h6 class="red" *ngIf="form.get('name')?.invalid && form.get('name')?.dirty">Field required</h6>
+            <h6 class="red" *ngIf="form.get('name')?.invalid && form.get('name')?.dirty">The name must be at least 2 characters.</h6>
         </div>
         <div class="group-input">
             <input [ngClass]="{'input-red': form.get('email')?.invalid && form.get('email')?.dirty}" class="input" type="email" name="email" placeholder="Email" formControlName="email">
-            <h6 class="red" *ngIf="form.get('email')?.invalid && form.get('email')?.dirty">Field required</h6>
+            <h6 class="red" *ngIf="form.get('email')?.invalid && form.get('email')?.dirty">The email must be a valid email address.</h6>
         </div>
         <div class="group-input">
             <input [ngClass]="{'input-red': form.get('phone')?.invalid && form.get('phone')?.dirty}"  class="input" type="tel" name="phone" placeholder="Phone" formControlName="phone">
-            <h6 class="red" *ngIf="form.get('phone')?.invalid && form.get('phone')?.dirty">Field required</h6>
+            <h6 class="red" *ngIf="form.get('phone')?.invalid && form.get('phone')?.dirty">The phone field is required.</h6>
             <h6>+38 (XXX) XXX - XX - XX</h6>
         </div>
     </div>
@@ -35,7 +35,8 @@
         </div>
     </div>
     <div class="file">
-        <div class="file-custom"><label for="file">Upload</label><input id="file" type="file" name="photo" formControlName="photo"><span>Upload your photo</span></div>
+        <div class="file-custom red" [ngClass]="{'red': bigSizeOfPhoto}"><label [ngClass]="{'red': bigSizeOfPhoto}" for="file">Upload</label><input (change)="uploadFile($event)" id="file" type="file" name="photo" accept="image/jpg,image/jpeg"><span>{{photoName}}</span></div>
+        <h6 class="red" *ngIf="bigSizeOfPhoto">The photo may not be greater than 5 Mbytes.</h6>
     </div>
     <div class="container">
         <button class="btn" [disabled]="!form.valid">Sign up</button>

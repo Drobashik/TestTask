@@ -32,9 +32,8 @@ export class UserService {
         return this.getUsersData(this.page, this.count);
     }
 
-    addUser(user: IUser) {
-        console.log(this.token);
-        return this.http.post(`${this.url}users`, user, {
+    addUser(user: FormData) {
+        return this.http.post<IUser>(`${this.url}users`, user, {
             headers: new HttpHeaders({
                 'Token': this.token
             })

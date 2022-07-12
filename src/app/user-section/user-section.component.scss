@@ -9,18 +9,19 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 21px;
+    transition: 300ms;
 
     .card {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 370px;
+        width: calc((100% - 60px) / 3);
         height: 254px;
         background-color: #fff;
         margin-bottom: 29px;
         padding: 20px;
+        transition: 300ms;
         img {
             display: flex;
             justify-content: center;
@@ -66,3 +67,17 @@ button {
     width: 100%;
     margin: 140px;
 }
+
+@media all and (max-width: 768px) {
+    .card {
+        width: calc((100% - 40px) / 2) !important; 
+        margin: 0 auto;
+    }
+}
+@media all and (max-width: 600px) {
+    .card {
+        width: calc((100% - 20px) / 1) !important; 
+        margin: 0 auto;
+    }
+}
+
